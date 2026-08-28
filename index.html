@@ -3,8 +3,13 @@
   <head>
     <title>ZENO</title>
     <style>
-      body {
+      * {
         margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
         min-height: 100vh;
         /* Updated path to use zeno-bg.jpg at the repository root */
         background-image: url("zeno-bg.jpg");
@@ -12,6 +17,100 @@
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Modern Navbar Styles */
+      nav {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 0 40px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .nav-logo {
+        color: #00d4ff;
+        font-size: 1.8em;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .nav-logo:hover {
+        color: #00f0ff;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1em;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #00d4ff;
+      }
+
+      /* Underline animation */
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #00d4ff;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+      }
+
+      /* Main content */
+      .container {
+        padding-top: 120px;
       }
       
       h1 {
@@ -22,10 +121,35 @@
         letter-spacing: 3px;
         margin-top: 50px;
       }
+
+      p {
+        text-align: center;
+        color: white;
+        font-size: 1.1em;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        padding: 20px;
+      }
     </style>
   </head>
   <body>
-    <h1>WELCOME TO THE ZENOVERSE</h1>
-    <p>ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES, DESIGNED TO MAKE ARTIFICIAL INTELLIGENCE MORE <strong>INTERACTIVE, CREATIVE, AND ACCESSIBLE.</strong> INSTEAD OF SIMPLY ASKING AI QUES[...]
+    <!-- Modern Navbar -->
+    <nav>
+      <div class="nav-container">
+        <a href="#" class="nav-logo">ZENO</a>
+        <ul class="nav-links">
+          <li><a href="#link1">Link 1</a></li>
+          <li><a href="#link2">Link 2</a></li>
+          <li><a href="#link3">Link 3</a></li>
+          <li><a href="#link4">Link 4</a></li>
+        </ul>
+        <a href="#" class="nav-cta">Get Started</a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h1>WELCOME TO THE ZENOVERSE</h1>
+      <p>ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES, DESIGNED TO MAKE ARTIFICIAL INTELLIGENCE MORE <strong>INTERACTIVE, CREATIVE, AND ACCESSIBLE.</strong> INSTEAD OF SIMPLY ASKING AI QUESTIONS...</p>
+    </div>
   </body>
 </html>
