@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>ZENO</title>
+
     <style>
       * {
         margin: 0;
@@ -11,7 +12,6 @@
 
       body {
         min-height: 100vh;
-        /* Updated path to use zeno-bg.jpg at the repository root */
         background-image: url("zeno-bg.jpg");
         background-size: cover;
         background-position: center;
@@ -20,7 +20,10 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       }
 
-      /* Modern Navbar Styles */
+      /* =========================
+         NAVBAR
+      ========================= */
+
       nav {
         background: rgba(0, 0, 0, 0.85);
         backdrop-filter: blur(10px);
@@ -30,6 +33,15 @@
         top: 0;
         z-index: 1000;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+        /* Initially hidden */
+        opacity: 0;
+        transition: opacity 1.5s ease;
+      }
+
+      /* Navbar appears */
+      nav.show {
+        opacity: 1;
       }
 
       .nav-container {
@@ -73,7 +85,6 @@
         color: #00d4ff;
       }
 
-      /* Underline animation */
       .nav-links a::after {
         content: '';
         position: absolute;
@@ -108,48 +119,131 @@
         box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
       }
 
-      /* Main content */
-      .container {
-        padding-top: 150px;
+      /* =========================
+         INTRO
+      ========================= */
+
+      .intro {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        opacity: 1;
+        transition: opacity 1.5s ease;
       }
-      
-      h1 {
+
+      .intro.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .intro h1 {
         text-align: center;
         color: white;
         font-size: 3.5em;
         text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
         letter-spacing: 3px;
-        margin-top: 50px;
       }
 
-      p {
+      .intro p {
+        max-width: 900px;
         text-align: center;
         color: white;
         font-size: 1.1em;
+        line-height: 1.6;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
         padding: 20px;
       }
+
+      /* =========================
+         MOBILE
+      ========================= */
+
+      @media (max-width: 700px) {
+        nav {
+          padding: 0 15px;
+        }
+
+        .nav-container {
+          height: 75px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .nav-logo {
+          font-size: 1.8em;
+        }
+
+        .nav-cta {
+          padding: 10px 20px;
+          font-size: 0.9em;
+        }
+
+        .intro h1 {
+          font-size: 2.2em;
+        }
+
+        .intro p {
+          font-size: 0.95em;
+        }
+      }
     </style>
   </head>
+
   <body>
-    <!-- Modern Navbar -->
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
     <nav>
       <div class="nav-container">
+
         <a href="#" class="nav-logo">ZENO</a>
+
         <ul class="nav-links">
           <li><a href="#link1">Link 1</a></li>
           <li><a href="#link2">Link 2</a></li>
           <li><a href="#link3">Link 3</a></li>
           <li><a href="#link4">Link 4</a></li>
         </ul>
+
         <a href="#" class="nav-cta">Get Started</a>
+
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
+    <!-- =========================
+         ZENOVERSE INTRO
+    ========================= -->
+
+    <div class="intro" id="intro">
+
       <h1>WELCOME TO THE ZENOVERSE</h1>
-      <p>ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES, DESIGNED TO MAKE ARTIFICIAL INTELLIGENCE MORE <strong>INTERACTIVE, CREATIVE, AND ACCESSIBLE.</strong> INSTEAD OF SIMPLY ASKING AI QUESTIONS...</p>
+
+      <p>
+        ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES,
+        DESIGNED TO MAKE ARTIFICIAL INTELLIGENCE MORE
+        <strong>INTERACTIVE, CREATIVE, AND ACCESSIBLE.</strong>
+        INSTEAD OF SIMPLY ASKING AI QUESTIONS...
+      </p>
+
     </div>
+
+    <!-- =========================
+         ANIMATION
+    ========================= -->
+
+    <script>
+      setTimeout(() => {
+        document.getElementById("intro").classList.add("fade-out");
+        document.querySelector("nav").classList.add("show");
+      }, 3000);
+    </script>
+
   </body>
 </html>
