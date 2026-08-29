@@ -1,12 +1,355 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>REPORT BUGS</title>
+    <title>ZENO - Report Bugs</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        background-image: url("zeno-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* =========================
+         NAVBAR
+      ========================= */
+
+      nav {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        padding: 0 40px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+        /* Initially hidden */
+        opacity: 0;
+        transition: opacity 1.5s ease;
+      }
+
+      /* Navbar appears */
+      nav.show {
+        opacity: 1;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+      }
+
+      .nav-logo {
+        color: #00d4ff;
+        font-size: 2.3em;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .nav-logo:hover {
+        color: #00f0ff;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.15em;
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #00d4ff;
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #00d4ff;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: white;
+        padding: 12px 35px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.1em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+      }
+
+      /* =========================
+         INTRO - NEON TILES
+      ========================= */
+
+      .intro {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(ellipse at center, rgba(0, 20, 40, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+        gap: 40px;
+        padding: 40px 20px;
+
+        opacity: 1;
+        transition: opacity 1.5s ease;
+      }
+
+      .intro.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .intro h1 {
+        text-align: center;
+        color: #00d4ff;
+        font-size: 3.5em;
+        font-weight: bold;
+        letter-spacing: 4px;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+        margin-bottom: 20px;
+        animation: neon-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes neon-pulse {
+        0%, 100% {
+          text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(0, 212, 255, 1), 0 0 50px rgba(0, 212, 255, 0.6);
+        }
+      }
+
+      .tiles-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        width: 100%;
+      }
+
+      .neon-tile {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #00d4ff;
+        border-radius: 0;
+        padding: 30px 20px;
+        text-align: center;
+        color: #00d4ff;
+        font-size: 1.1em;
+        font-weight: 600;
+        letter-spacing: 2px;
+        box-shadow: 
+          0 0 10px rgba(0, 212, 255, 0.5),
+          inset 0 0 10px rgba(0, 212, 255, 0.1),
+          0 0 20px rgba(0, 212, 255, 0.3);
+        transition: all 0.3s ease;
+        animation: tile-flicker 3s ease-in-out infinite;
+      }
+
+      .neon-tile:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .neon-tile:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      .neon-tile:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .neon-tile:nth-child(4) {
+        animation-delay: 0.9s;
+      }
+
+      @keyframes tile-flicker {
+        0%, 100% {
+          box-shadow: 
+            0 0 10px rgba(0, 212, 255, 0.5),
+            inset 0 0 10px rgba(0, 212, 255, 0.1),
+            0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        50% {
+          box-shadow: 
+            0 0 20px rgba(0, 212, 255, 0.8),
+            inset 0 0 15px rgba(0, 212, 255, 0.2),
+            0 0 30px rgba(0, 212, 255, 0.5);
+        }
+      }
+
+      .neon-tile:hover {
+        background: rgba(0, 212, 255, 0.1);
+        box-shadow: 
+          0 0 30px rgba(0, 212, 255, 1),
+          inset 0 0 20px rgba(0, 212, 255, 0.3),
+          0 0 40px rgba(0, 212, 255, 0.6);
+        transform: scale(1.05);
+      }
+
+      .intro p {
+        max-width: 900px;
+        text-align: center;
+        color: #00d4ff;
+        font-size: 1em;
+        line-height: 1.6;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      .intro p strong {
+        color: #00f0ff;
+        text-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+      }
+
+      /* =========================
+         MOBILE
+      ========================= */
+
+      @media (max-width: 700px) {
+        nav {
+          padding: 0 15px;
+        }
+
+        .nav-container {
+          height: 75px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .nav-logo {
+          font-size: 1.8em;
+        }
+
+        .nav-cta {
+          padding: 10px 20px;
+          font-size: 0.9em;
+        }
+
+        .intro h1 {
+          font-size: 2.2em;
+        }
+
+        .intro p {
+          font-size: 0.95em;
+        }
+
+        .tiles-container {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 15px;
+        }
+
+        .neon-tile {
+          padding: 20px 15px;
+          font-size: 0.9em;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <h1>REPORT BUGS</h1>
-    <p>REPORT ANY PROBLEM OCCURING DURING YOUR SESSION IN ZENO.</p>
-    <p>YOUR REPORTS WILL BE REVEIWED WITHIN 24 HOURS.AND A REPLY WILL BE SENT TO YOU IN THE 
-    NEXT 24 HOURS</p>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav>
+      <div class="nav-container">
+
+        <a href="index.html" class="nav-logo">ZENO</a>
+
+        <ul class="nav-links">
+          <li><a href="About.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="Link 3.html">Link 3</a></li>
+          <li><a href="link4.html">Link 4</a></li>
+        </ul>
+
+        <a href="index.html" class="nav-cta">Get Started</a>
+
+      </div>
+    </nav>
+
+    <!-- =========================
+         REPORT BUGS CONTENT
+    ========================= -->
+
+    <div class="intro" id="intro">
+
+      <h1>REPORT BUGS</h1>
+
+      <div class="tiles-container">
+        <div class="neon-tile">ISSUE TRACKING</div>
+        <div class="neon-tile">FEEDBACK</div>
+        <div class="neon-tile">SUPPORT</div>
+        <div class="neon-tile">RESPONSE</div>
+      </div>
+
+      <p>
+        REPORT ANY PROBLEM OCCURRING DURING YOUR SESSION IN ZENO.
+        <strong>YOUR REPORTS WILL BE REVIEWED WITHIN 24 HOURS,</strong> AND A REPLY WILL BE SENT TO YOU IN THE
+        NEXT 24 HOURS.
+      </p>
+
+      <p style="color:#00f0ff; font-weight:600;">To submit a detailed report, please email: support@ironcompanies.tech</p>
+
+    </div>
+
+    <!-- =========================
+         ANIMATION
+    ========================= -->
+
+    <script>
+      setTimeout(() => {
+        document.getElementById("intro").classList.add("fade-out");
+        document.querySelector("nav").classList.add("show");
+      }, 3000);
+    </script>
+
   </body>
 </html>
