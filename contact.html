@@ -151,12 +151,26 @@
         }
       }
 
+      .reason {
+        max-width: 800px;
+        text-align: center;
+        color: #bff7ff;
+        font-size: 1.15em;
+        line-height: 1.4;
+        margin-bottom: 10px;
+        padding: 0 20px;
+        text-shadow: 0 0 8px rgba(0, 212, 255, 0.25);
+      }
+
       .tiles-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
         max-width: 900px;
         width: 100%;
+        position: relative; /* allow centered button */
+        min-height: 220px; /* ensure space for centered button */
+        align-items: center;
       }
 
       .neon-tile {
@@ -174,7 +188,8 @@
           inset 0 0 10px rgba(0, 212, 255, 0.1),
           0 0 20px rgba(0, 212, 255, 0.3);
         transition: all 0.3s ease;
-        animation: tile-flicker 3s ease-in-out infinite;
+        /* fade animation */
+        animation: tile-fade 6s ease-in-out infinite;
       }
 
       .neon-tile:nth-child(1) {
@@ -182,39 +197,67 @@
       }
 
       .neon-tile:nth-child(2) {
-        animation-delay: 0.3s;
+        animation-delay: 0.8s;
       }
 
       .neon-tile:nth-child(3) {
-        animation-delay: 0.6s;
+        animation-delay: 1.6s;
       }
 
       .neon-tile:nth-child(4) {
-        animation-delay: 0.9s;
+        animation-delay: 2.4s;
       }
 
-      @keyframes tile-flicker {
-        0%, 100% {
-          box-shadow: 
-            0 0 10px rgba(0, 212, 255, 0.5),
-            inset 0 0 10px rgba(0, 212, 255, 0.1),
-            0 0 20px rgba(0, 212, 255, 0.3);
+      @keyframes tile-fade {
+        0% {
+          opacity: 0.15;
+          transform: translateY(0) scale(0.98);
+          box-shadow: 0 0 5px rgba(0, 212, 255, 0.2);
         }
-        50% {
-          box-shadow: 
-            0 0 20px rgba(0, 212, 255, 0.8),
-            inset 0 0 15px rgba(0, 212, 255, 0.2),
-            0 0 30px rgba(0, 212, 255, 0.5);
+        40% {
+          opacity: 0.95;
+          transform: translateY(-6px) scale(1.02);
+          box-shadow: 0 0 30px rgba(0, 212, 255, 0.9);
+        }
+        100% {
+          opacity: 0.25;
+          transform: translateY(0) scale(0.99);
+          box-shadow: 0 0 8px rgba(0, 212, 255, 0.3);
         }
       }
 
       .neon-tile:hover {
-        background: rgba(0, 212, 255, 0.1);
+        background: rgba(0, 212, 255, 0.08);
         box-shadow: 
           0 0 30px rgba(0, 212, 255, 1),
           inset 0 0 20px rgba(0, 212, 255, 0.3),
           0 0 40px rgba(0, 212, 255, 0.6);
         transform: scale(1.05);
+        opacity: 1;
+      }
+
+      /* centered share button */
+      .center-share-btn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 20;
+        background: linear-gradient(90deg, rgba(0,212,255,1), rgba(0,160,255,1));
+        color: #001217;
+        padding: 18px 28px;
+        border-radius: 40px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 30px rgba(0,212,255,0.2), 0 2px 6px rgba(0,0,0,0.4);
+        transition: transform 0.18s ease, box-shadow 0.18s ease;
+      }
+
+      .center-share-btn:hover {
+        transform: translate(-50%, -50%) scale(1.03);
+        box-shadow: 0 12px 40px rgba(0,212,255,0.3);
       }
 
       .contact p {
@@ -271,11 +314,17 @@
         .tiles-container {
           grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
           gap: 15px;
+          min-height: 180px;
         }
 
         .neon-tile {
           padding: 20px 15px;
           font-size: 0.9em;
+        }
+
+        .center-share-btn {
+          padding: 14px 20px;
+          font-size: 0.95em;
         }
       }
     </style>
@@ -312,7 +361,11 @@
 
       <h1>HELP US BUILD MORE POWERFUL SOFTWARE</h1>
 
+      <p class="reason">Your ideas unlock real features — by sharing we can prioritize what matters, fix pain points faster, and build tools people actually want to use. Tell us what you'd love to see.</p>
+
       <div class="tiles-container">
+        <button class="center-share-btn" aria-label="Share your ideas">SHARE YOUR IDEAS</button>
+
         <div class="neon-tile">SHARE</div>
         <div class="neon-tile">INNOVATE</div>
         <div class="neon-tile">COLLABORATE</div>
