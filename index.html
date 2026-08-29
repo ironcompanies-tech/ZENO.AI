@@ -120,7 +120,7 @@
       }
 
       /* =========================
-         INTRO
+         INTRO - NEON TILES
       ========================= */
 
       .intro {
@@ -129,6 +129,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        background: radial-gradient(ellipse at center, rgba(0, 20, 40, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+        gap: 40px;
+        padding: 40px 20px;
 
         opacity: 1;
         transition: opacity 1.5s ease;
@@ -141,20 +144,105 @@
 
       .intro h1 {
         text-align: center;
-        color: white;
+        color: #00d4ff;
         font-size: 3.5em;
-        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-        letter-spacing: 3px;
+        font-weight: bold;
+        letter-spacing: 4px;
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+        margin-bottom: 20px;
+        animation: neon-pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes neon-pulse {
+        0%, 100% {
+          text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(0, 212, 255, 1), 0 0 50px rgba(0, 212, 255, 0.6);
+        }
+      }
+
+      .tiles-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        width: 100%;
+      }
+
+      .neon-tile {
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid #00d4ff;
+        border-radius: 0;
+        padding: 30px 20px;
+        text-align: center;
+        color: #00d4ff;
+        font-size: 1.1em;
+        font-weight: 600;
+        letter-spacing: 2px;
+        box-shadow: 
+          0 0 10px rgba(0, 212, 255, 0.5),
+          inset 0 0 10px rgba(0, 212, 255, 0.1),
+          0 0 20px rgba(0, 212, 255, 0.3);
+        transition: all 0.3s ease;
+        animation: tile-flicker 3s ease-in-out infinite;
+      }
+
+      .neon-tile:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .neon-tile:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      .neon-tile:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .neon-tile:nth-child(4) {
+        animation-delay: 0.9s;
+      }
+
+      @keyframes tile-flicker {
+        0%, 100% {
+          box-shadow: 
+            0 0 10px rgba(0, 212, 255, 0.5),
+            inset 0 0 10px rgba(0, 212, 255, 0.1),
+            0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        50% {
+          box-shadow: 
+            0 0 20px rgba(0, 212, 255, 0.8),
+            inset 0 0 15px rgba(0, 212, 255, 0.2),
+            0 0 30px rgba(0, 212, 255, 0.5);
+        }
+      }
+
+      .neon-tile:hover {
+        background: rgba(0, 212, 255, 0.1);
+        box-shadow: 
+          0 0 30px rgba(0, 212, 255, 1),
+          inset 0 0 20px rgba(0, 212, 255, 0.3),
+          0 0 40px rgba(0, 212, 255, 0.6);
+        transform: scale(1.05);
       }
 
       .intro p {
         max-width: 900px;
         text-align: center;
-        color: white;
-        font-size: 1.1em;
+        color: #00d4ff;
+        font-size: 1em;
         line-height: 1.6;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         padding: 20px;
+        margin-top: 20px;
+      }
+
+      .intro p strong {
+        color: #00f0ff;
+        text-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
       }
 
       /* =========================
@@ -190,6 +278,16 @@
         .intro p {
           font-size: 0.95em;
         }
+
+        .tiles-container {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 15px;
+        }
+
+        .neon-tile {
+          padding: 20px 15px;
+          font-size: 0.9em;
+        }
       }
     </style>
   </head>
@@ -224,6 +322,13 @@
     <div class="intro" id="intro">
 
       <h1>WELCOME TO THE ZENOVERSE</h1>
+
+      <div class="tiles-container">
+        <div class="neon-tile">INTERACTIVE</div>
+        <div class="neon-tile">CREATIVE</div>
+        <div class="neon-tile">ACCESSIBLE</div>
+        <div class="neon-tile">INNOVATIVE</div>
+      </div>
 
       <p>
         ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES,
