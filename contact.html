@@ -33,7 +33,8 @@
         top: 0;
         z-index: 1000;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        opacity: 1;
+        /* Initially hidden like index.html */
+        opacity: 0;
         transition: opacity 1.5s ease;
       }
 
@@ -171,6 +172,15 @@
         position: relative; /* allow centered button */
         min-height: 220px; /* ensure space for centered button */
         align-items: center;
+        /* add transition so we can fade/shift like index */
+        transition: opacity 1.5s ease, transform 1.5s ease;
+      }
+
+      /* fade/shift state for tiles (added) */
+      .tiles-container.fade-out {
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
       }
 
       .neon-tile {
@@ -361,7 +371,7 @@
 
       <h1>HELP US BUILD MORE POWERFUL SOFTWARE</h1>
 
-      <p class="reason">Your ideas unlock real features — by sharing we can prioritize what matters, fix pain points faster, and build tools people actually want to use. Tell us what you'd love to see.</p>
+      <p class="reason">Your ideas unlock real features — by sharing we can prioritize what matters, fix pain points faster, and build tools people actually want to use. Tell us what you'd love to s[...]</p>
 
       <div class="tiles-container">
         <button class="center-share-btn" aria-label="Share your ideas">SHARE YOUR IDEAS</button>
@@ -381,6 +391,20 @@
       </p>
 
     </div>
+
+    <!-- =========================
+         ANIMATION (tiles fade + nav reveal)
+    ========================= -->
+
+    <script>
+      // After 3s, fade the tiles and show the navbar (same UX pattern as index.html)
+      setTimeout(() => {
+        const tiles = document.querySelector(".tiles-container");
+        const nav = document.querySelector("nav");
+        if (tiles) tiles.classList.add("fade-out");
+        if (nav) nav.classList.add("show");
+      }, 3000);
+    </script>
 
   </body>
 </html>
