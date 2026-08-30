@@ -121,73 +121,115 @@
 
       /* =========================
          CONTROLS (TEXT + BUTTONS)
+         Buttons moved to left; increased contrast and size for readability
       ========================= */
 
       .controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 24px;
+        align-items: start;
         margin-top: 120px; /* leave space for fixed nav */
-        color: #00d4ff;
-        text-align: center;
-        padding: 20px;
+        color: #eaffff;
+        text-align: left;
+        padding: 26px;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+
+        /* stronger backdrop to improve readability over the background image */
+        background: linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.45));
+        border-radius: 14px;
+        border: 1px solid rgba(0,212,255,0.16);
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0,212,255,0.06);
 
         /* start hidden, show after intro fades */
         opacity: 0;
-        transition: opacity 1.5s ease;
+        transition: opacity 1.2s ease, transform 0.6s ease;
+        transform: translateY(8px);
         z-index: 800;
       }
 
       .controls.show {
         opacity: 1;
+        transform: translateY(0);
       }
 
-      .controls p {
-        max-width: 1000px;
-        font-size: 1.05em;
-        line-height: 1.5;
-        letter-spacing: 1px;
-        text-shadow: 0 0 10px rgba(0, 212, 255, 0.45);
-        color: #cff9ff;
-      }
-
+      /* button column */
       .control-buttons {
         display: flex;
+        flex-direction: column;
         gap: 14px;
-        flex-wrap: wrap;
-        justify-content: center;
+        align-items: stretch;
+        justify-content: flex-start;
       }
 
       .controls button {
-        background: linear-gradient(135deg, rgba(0,212,255,0.14), rgba(0,153,204,0.12));
-        color: #00e5ff;
-        padding: 12px 22px;
-        border-radius: 18px;
-        border: 2px solid rgba(0,212,255,0.35);
-        font-size: 0.95em;
-        font-weight: 700;
+        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        color: #001117;
+        padding: 16px 18px;
+        border-radius: 14px;
+        border: none;
+        font-size: 1.05em;
+        font-weight: 900;
         letter-spacing: 1px;
         cursor: pointer;
         box-shadow:
-          0 6px 18px rgba(0, 212, 255, 0.12),
-          inset 0 0 10px rgba(0, 212, 255, 0.04);
+          0 8px 30px rgba(0, 212, 255, 0.22),
+          0 0 18px rgba(0, 212, 255, 0.18);
         transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+        text-align: left;
+      }
+
+      .controls button:focus {
+        outline: 3px solid rgba(0,240,255,0.18);
+        outline-offset: 2px;
       }
 
       .controls button:hover {
-        transform: translateY(-3px);
+        transform: translateX(6px);
         box-shadow:
-          0 12px 30px rgba(0, 212, 255, 0.22),
-          inset 0 0 18px rgba(0, 212, 255, 0.08);
-        background: linear-gradient(135deg, rgba(0,212,255,0.22), rgba(0,153,204,0.18));
+          0 16px 48px rgba(0, 212, 255, 0.30),
+          0 0 26px rgba(0, 212, 255, 0.26);
+        background: linear-gradient(135deg, #00f0ff, #00a3d6);
+      }
+
+      /* text column */
+      .controls .text-col p {
+        font-size: 1.06em;
+        line-height: 1.55;
+        letter-spacing: 0.6px;
+        color: #f1ffff;
+        text-shadow: 0 0 16px rgba(0, 212, 255, 0.58);
+      }
+
+      .controls .text-col p.lead {
+        font-size: 1.12em;
+        font-weight: 800;
+        color: #ffffff;
+      }
+
+      .controls .text-col p.more {
+        margin-top: 12px;
+        color: #dffbff;
+        opacity: 0.98;
+      }
+
+      /* accent labels for button actions to improve scanability */
+      .action-label {
+        display: block;
+        font-size: 0.75em;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        color: rgba(0,0,0,0.6);
+        margin-bottom: 6px;
       }
 
       /* make buttons slightly larger on desktop */
       @media (min-width: 900px) {
         .controls button {
-          padding: 14px 28px;
-          font-size: 1em;
+          padding: 18px 20px;
+          font-size: 1.08em;
         }
       }
 
@@ -361,20 +403,30 @@
           font-size: 0.9em;
         }
 
-        /* controls adjustments for mobile */
+        /* controls adjustments for mobile: stack buttons above text */
         .controls {
+          grid-template-columns: 1fr;
           margin-top: 90px;
           gap: 12px;
         }
 
-        .controls p {
-          font-size: 0.95em;
+        .control-buttons {
+          flex-direction: row;
+          justify-content: center;
+          flex-wrap: wrap;
         }
 
         .controls button {
           padding: 10px 14px;
           font-size: 0.88em;
           border-radius: 14px;
+          min-width: 110px;
+          text-align: center;
+        }
+
+        .controls .text-col p {
+          font-size: 0.95em;
+          text-align: center;
         }
       }
     </style>
@@ -406,14 +458,26 @@
          CONTROLS (text + buttons) - initially hidden, shown after intro fades
     ========================= -->
 
-    <div class="controls" id="controls">
-      <p>CLICK ON ANY OF THE BUTTONS BELOW TO PERFORM THE SPECIFIC TASK YOU HAVE TO PERFORM</p>
+    <div class="controls" id="controls" role="region" aria-label="Zeno controls">
+      <div class="control-buttons" aria-hidden="false">
+        <button type="button" aria-label="Think mode"><span class="action-label">THINK</span>Explore & Ideate</button>
+        <button type="button" aria-label="Create mode"><span class="action-label">CREATE</span>Generate & Remix</button>
+        <button type="button" aria-label="Code mode"><span class="action-label">CODE</span>Prototype & Test</button>
+        <button type="button" aria-label="Imagine mode"><span class="action-label">IMAGINE</span>Experiment & Surprise</button>
+      </div>
 
-      <div class="control-buttons">
-        <button type="button">THINK</button>
-        <button type="button">CREATE</button>
-        <button type="button">CODE</button>
-        <button type="button">IMAGINE</button>
+      <div class="text-col">
+        <p class="lead">CLICK ANY OF THE BUTTONS TO START A SPECIFIC TASK — EACH BUTTON IS A GATEWAY INTO A DIFFERENT WAY OF WORKING WITH AI.</p>
+
+        <p class="more"><strong>Think —</strong> Rapid exploration tools for brainstorming and system design. Use Think when you want to map possibilities, define problems, or rapidly iterate on high-level ideas without committing to a single output.</p>
+
+        <p class="more"><strong>Create —</strong> Visual and audio studios for turning concepts into shareable artifacts. Create provides templates, generative styles, and live previews so your ideas become tangible fast.</p>
+
+        <p class="more"><strong>Code —</strong> A lightweight sandbox for prototyping, testing, and refining logic. Code connects to real-time logs and versioned snippets so you can move from idea to working prototype quickly.</p>
+
+        <p class="more"><strong>Imagine —</strong> Open-ended experimental tools that remix data, style, and intent to surface surprising results. Imagine is where playful accidents become new directions.</p>
+
+        <p class="more">Each mode includes contextual tips, example prompts, and clear controls so you always know how to steer outputs. The buttons are intentionally bold and left-aligned to make modes easy to find and fast to access.</p>
       </div>
     </div>
 
