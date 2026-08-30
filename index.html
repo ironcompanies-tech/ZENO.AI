@@ -120,6 +120,78 @@
       }
 
       /* =========================
+         CONTROLS (TEXT + BUTTONS)
+      ========================= */
+
+      .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 120px; /* leave space for fixed nav */
+        color: #00d4ff;
+        text-align: center;
+        padding: 20px;
+
+        /* start hidden, show after intro fades */
+        opacity: 0;
+        transition: opacity 1.5s ease;
+        z-index: 800;
+      }
+
+      .controls.show {
+        opacity: 1;
+      }
+
+      .controls p {
+        max-width: 1000px;
+        font-size: 1.05em;
+        line-height: 1.5;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.45);
+        color: #cff9ff;
+      }
+
+      .control-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .controls button {
+        background: linear-gradient(135deg, rgba(0,212,255,0.14), rgba(0,153,204,0.12));
+        color: #00e5ff;
+        padding: 12px 22px;
+        border-radius: 18px;
+        border: 2px solid rgba(0,212,255,0.35);
+        font-size: 0.95em;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        box-shadow:
+          0 6px 18px rgba(0, 212, 255, 0.12),
+          inset 0 0 10px rgba(0, 212, 255, 0.04);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      }
+
+      .controls button:hover {
+        transform: translateY(-3px);
+        box-shadow:
+          0 12px 30px rgba(0, 212, 255, 0.22),
+          inset 0 0 18px rgba(0, 212, 255, 0.08);
+        background: linear-gradient(135deg, rgba(0,212,255,0.22), rgba(0,153,204,0.18));
+      }
+
+      /* make buttons slightly larger on desktop */
+      @media (min-width: 900px) {
+        .controls button {
+          padding: 14px 28px;
+          font-size: 1em;
+        }
+      }
+
+      /* =========================
          INTRO - NEON TILES
       ========================= */
 
@@ -288,6 +360,22 @@
           padding: 20px 15px;
           font-size: 0.9em;
         }
+
+        /* controls adjustments for mobile */
+        .controls {
+          margin-top: 90px;
+          gap: 12px;
+        }
+
+        .controls p {
+          font-size: 0.95em;
+        }
+
+        .controls button {
+          padding: 10px 14px;
+          font-size: 0.88em;
+          border-radius: 14px;
+        }
       }
     </style>
   </head>
@@ -314,12 +402,21 @@
       </div>
     </nav>
 
-  <p>CLICK ON  ANY OF THE BUTTONS BELOW TO PERFORM THE SPECIFIC TASK YOU
-                                 HAVE TO PERFORM</p>
-    <button>THINK</button>
-    <button>CREATE</button>
-    <button>CODE</button>
-    <button>IMAGINE</button>
+    <!-- =========================
+         CONTROLS (text + buttons) - initially hidden, shown after intro fades
+    ========================= -->
+
+    <div class="controls" id="controls">
+      <p>CLICK ON ANY OF THE BUTTONS BELOW TO PERFORM THE SPECIFIC TASK YOU HAVE TO PERFORM</p>
+
+      <div class="control-buttons">
+        <button type="button">THINK</button>
+        <button type="button">CREATE</button>
+        <button type="button">CODE</button>
+        <button type="button">IMAGINE</button>
+      </div>
+    </div>
+
     <!-- =========================
          ZENOVERSE INTRO
     ========================= -->
@@ -352,6 +449,9 @@
       setTimeout(() => {
         document.getElementById("intro").classList.add("fade-out");
         document.querySelector("nav").classList.add("show");
+        // show the controls at the same time as the nav so they remain visible after the intro fades
+        const controls = document.getElementById("controls");
+        if (controls) controls.classList.add("show");
       }, 3000);
     </script>
 
