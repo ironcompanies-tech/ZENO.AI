@@ -32,14 +32,13 @@
         width: 100%;
         top: 0;
         z-index: 1000;
+
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
-        /* Initially hidden */
         opacity: 0;
         transition: opacity 1.5s ease;
       }
 
-      /* Navbar appears */
       nav.show {
         opacity: 1;
       }
@@ -47,9 +46,11 @@
       .nav-container {
         max-width: 1200px;
         margin: 0 auto;
+
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         height: 100px;
       }
 
@@ -78,6 +79,7 @@
         font-size: 1.15em;
         font-weight: 500;
         position: relative;
+
         transition: color 0.3s ease;
       }
 
@@ -88,11 +90,15 @@
       .nav-links a::after {
         content: '';
         position: absolute;
+
         width: 0;
         height: 2px;
+
         bottom: -5px;
         left: 0;
+
         background-color: #00d4ff;
+
         transition: width 0.3s ease;
       }
 
@@ -102,51 +108,82 @@
 
       .nav-cta {
         background: linear-gradient(135deg, #00d4ff, #0099cc);
+
         color: white;
+
         padding: 12px 35px;
+
         border: none;
         border-radius: 25px;
+
         font-size: 1.1em;
         font-weight: 600;
+
         cursor: pointer;
+
         transition: all 0.3s ease;
+
         text-decoration: none;
         display: inline-block;
       }
 
       .nav-cta:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+
+        box-shadow:
+          0 8px 20px rgba(0, 212, 255, 0.4);
       }
 
+
       /* =========================
-         CONTROLS (TEXT + BUTTONS)
-         Buttons moved to left; increased contrast and size for readability
+         CONTROLS
       ========================= */
 
       .controls {
         display: grid;
+
         grid-template-columns: 260px 1fr;
+
         gap: 24px;
+
         align-items: start;
-        margin-top: 120px; /* leave space for fixed nav */
+
+        margin-top: 120px;
+
         color: #eaffff;
+
         text-align: left;
+
         padding: 26px;
+
         max-width: 1100px;
+
         margin-left: auto;
         margin-right: auto;
 
-        /* stronger backdrop to improve readability over the background image */
-        background: linear-gradient(90deg, rgba(0,0,0,0.72), rgba(0,0,0,0.45));
-        border-radius: 14px;
-        border: 1px solid rgba(0,212,255,0.16);
-        box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0,212,255,0.06);
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.45)
+          );
 
-        /* start hidden, show after intro fades */
+        border-radius: 14px;
+
+        border: 1px solid rgba(0,212,255,0.16);
+
+        box-shadow:
+          0 10px 40px rgba(0,0,0,0.6),
+          0 0 30px rgba(0,212,255,0.06);
+
         opacity: 0;
-        transition: opacity 1.2s ease, transform 0.6s ease;
+
         transform: translateY(8px);
+
+        transition:
+          opacity 1.2s ease,
+          transform 0.6s ease;
+
         z-index: 800;
       }
 
@@ -155,151 +192,278 @@
         transform: translateY(0);
       }
 
-      /* button column */
+
+      /* =========================
+         CONTROL BUTTONS
+      ========================= */
+
       .control-buttons {
         display: flex;
+
         flex-direction: column;
+
         gap: 14px;
+
         align-items: stretch;
+
         justify-content: flex-start;
       }
 
       .controls button {
-        background: linear-gradient(135deg, #00d4ff, #0099cc);
+        background:
+          linear-gradient(
+            135deg,
+            #00d4ff,
+            #0099cc
+          );
+
         color: #001117;
+
         padding: 16px 18px;
+
         border-radius: 14px;
+
         border: none;
+
         font-size: 1.05em;
+
         font-weight: 900;
+
         letter-spacing: 1px;
+
         cursor: pointer;
+
         box-shadow:
           0 8px 30px rgba(0, 212, 255, 0.22),
           0 0 18px rgba(0, 212, 255, 0.18);
-        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          background 0.18s ease;
+
         text-align: left;
       }
 
       .controls button:focus {
         outline: 3px solid rgba(0,240,255,0.18);
+
         outline-offset: 2px;
       }
 
       .controls button:hover {
         transform: translateX(6px);
+
         box-shadow:
           0 16px 48px rgba(0, 212, 255, 0.30),
           0 0 26px rgba(0, 212, 255, 0.26);
-        background: linear-gradient(135deg, #00f0ff, #00a3d6);
+
+        background:
+          linear-gradient(
+            135deg,
+            #00f0ff,
+            #00a3d6
+          );
       }
 
-      /* text column */
+      .action-label {
+        display: block;
+
+        font-size: 0.75em;
+
+        font-weight: 700;
+
+        letter-spacing: 1.5px;
+
+        color: rgba(0,0,0,0.6);
+
+        margin-bottom: 6px;
+      }
+
+
+      /* =========================
+         CONTROL TEXT
+      ========================= */
+
       .controls .text-col p {
         font-size: 1.06em;
+
         line-height: 1.55;
+
         letter-spacing: 0.6px;
+
         color: #f1ffff;
-        text-shadow: 0 0 16px rgba(0, 212, 255, 0.58);
+
+        text-shadow:
+          0 0 16px rgba(0, 212, 255, 0.58);
       }
 
       .controls .text-col p.lead {
         font-size: 1.12em;
+
         font-weight: 800;
+
         color: #ffffff;
       }
 
       .controls .text-col p.more {
         margin-top: 12px;
+
         color: #dffbff;
+
         opacity: 0.98;
       }
 
-      /* accent labels for button actions to improve scanability */
-      .action-label {
-        display: block;
-        font-size: 0.75em;
-        font-weight: 700;
-        letter-spacing: 1.5px;
-        color: rgba(0,0,0,0.6);
-        margin-bottom: 6px;
-      }
-
-      /* make buttons slightly larger on desktop */
-      @media (min-width: 900px) {
-        .controls button {
-          padding: 18px 20px;
-          font-size: 1.08em;
-        }
-      }
 
       /* =========================
-         INTRO - NEON TILES
+         DESKTOP BUTTON SIZE
+      ========================= */
+
+      @media (min-width: 900px) {
+
+        .controls button {
+          padding: 18px 20px;
+
+          font-size: 1.08em;
+        }
+
+      }
+
+
+      /* =========================
+         ZENOVERSE INTRO
       ========================= */
 
       .intro {
+        position: fixed;
+
+        inset: 0;
+
         min-height: 100vh;
+
         display: flex;
+
         flex-direction: column;
+
         justify-content: center;
+
         align-items: center;
-        background: radial-gradient(ellipse at center, rgba(0, 20, 40, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+
+        background:
+          radial-gradient(
+            ellipse at center,
+            rgba(0, 20, 40, 0.8) 0%,
+            rgba(0, 0, 0, 0.95) 100%
+          );
+
         gap: 40px;
+
         padding: 40px 20px;
 
         opacity: 1;
+
         transition: opacity 1.5s ease;
+
+        z-index: 2000;
       }
 
       .intro.fade-out {
         opacity: 0;
+
         pointer-events: none;
       }
 
+
+      /* =========================
+         INTRO HEADING
+      ========================= */
+
       .intro h1 {
         text-align: center;
+
         color: #00d4ff;
+
         font-size: 3.5em;
+
         font-weight: bold;
+
         letter-spacing: 4px;
-        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+
+        text-shadow:
+          0 0 20px rgba(0, 212, 255, 0.8),
+          0 0 40px rgba(0, 212, 255, 0.4);
+
         margin-bottom: 20px;
-        animation: neon-pulse 2s ease-in-out infinite;
+
+        animation:
+          neon-pulse 2s ease-in-out infinite;
       }
 
       @keyframes neon-pulse {
+
         0%, 100% {
-          text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
+          text-shadow:
+            0 0 20px rgba(0, 212, 255, 0.8),
+            0 0 40px rgba(0, 212, 255, 0.4);
         }
+
         50% {
-          text-shadow: 0 0 30px rgba(0, 212, 255, 1), 0 0 50px rgba(0, 212, 255, 0.6);
+          text-shadow:
+            0 0 30px rgba(0, 212, 255, 1),
+            0 0 50px rgba(0, 212, 255, 0.6);
         }
+
       }
+
+
+      /* =========================
+         NEON TILES
+      ========================= */
 
       .tiles-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+        grid-template-columns:
+          repeat(
+            auto-fit,
+            minmax(200px, 1fr)
+          );
+
         gap: 20px;
+
         max-width: 900px;
+
         width: 100%;
       }
 
       .neon-tile {
         background: rgba(0, 0, 0, 0.7);
+
         border: 2px solid #00d4ff;
+
         border-radius: 0;
+
         padding: 30px 20px;
+
         text-align: center;
+
         color: #00d4ff;
+
         font-size: 1.1em;
+
         font-weight: 600;
+
         letter-spacing: 2px;
-        box-shadow: 
+
+        box-shadow:
           0 0 10px rgba(0, 212, 255, 0.5),
           inset 0 0 10px rgba(0, 212, 255, 0.1),
           0 0 20px rgba(0, 212, 255, 0.3);
+
         transition: all 0.3s ease;
-        animation: tile-flicker 3s ease-in-out infinite;
+
+        animation:
+          tile-flicker 3s ease-in-out infinite;
       }
 
       .neon-tile:nth-child(1) {
@@ -319,51 +483,74 @@
       }
 
       @keyframes tile-flicker {
+
         0%, 100% {
-          box-shadow: 
+          box-shadow:
             0 0 10px rgba(0, 212, 255, 0.5),
             inset 0 0 10px rgba(0, 212, 255, 0.1),
             0 0 20px rgba(0, 212, 255, 0.3);
         }
+
         50% {
-          box-shadow: 
+          box-shadow:
             0 0 20px rgba(0, 212, 255, 0.8),
             inset 0 0 15px rgba(0, 212, 255, 0.2),
             0 0 30px rgba(0, 212, 255, 0.5);
         }
+
       }
 
       .neon-tile:hover {
         background: rgba(0, 212, 255, 0.1);
-        box-shadow: 
+
+        box-shadow:
           0 0 30px rgba(0, 212, 255, 1),
           inset 0 0 20px rgba(0, 212, 255, 0.3),
           0 0 40px rgba(0, 212, 255, 0.6);
+
         transform: scale(1.05);
       }
 
+
+      /* =========================
+         INTRO DESCRIPTION
+      ========================= */
+
       .intro p {
         max-width: 900px;
+
         text-align: center;
+
         color: #00d4ff;
+
         font-size: 1em;
+
         line-height: 1.6;
+
         letter-spacing: 1px;
-        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+
+        text-shadow:
+          0 0 10px rgba(0, 212, 255, 0.5);
+
         padding: 20px;
+
         margin-top: 20px;
       }
 
       .intro p strong {
         color: #00f0ff;
-        text-shadow: 0 0 15px rgba(0, 240, 255, 0.8);
+
+        text-shadow:
+          0 0 15px rgba(0, 240, 255, 0.8);
       }
+
 
       /* =========================
          MOBILE
       ========================= */
 
       @media (max-width: 700px) {
+
         nav {
           padding: 0 15px;
         }
@@ -382,6 +569,7 @@
 
         .nav-cta {
           padding: 10px 20px;
+
           font-size: 0.9em;
         }
 
@@ -394,43 +582,60 @@
         }
 
         .tiles-container {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          grid-template-columns:
+            repeat(
+              auto-fit,
+              minmax(150px, 1fr)
+            );
+
           gap: 15px;
         }
 
         .neon-tile {
           padding: 20px 15px;
+
           font-size: 0.9em;
         }
 
-        /* controls adjustments for mobile: stack buttons above text */
         .controls {
           grid-template-columns: 1fr;
+
           margin-top: 90px;
+
           gap: 12px;
         }
 
         .control-buttons {
           flex-direction: row;
+
           justify-content: center;
+
           flex-wrap: wrap;
         }
 
         .controls button {
           padding: 10px 14px;
+
           font-size: 0.88em;
+
           border-radius: 14px;
+
           min-width: 110px;
+
           text-align: center;
         }
 
         .controls .text-col p {
           font-size: 0.95em;
+
           text-align: center;
         }
+
       }
+
     </style>
   </head>
+
 
   <body>
 
@@ -439,84 +644,228 @@
     ========================= -->
 
     <nav>
+
       <div class="nav-container">
 
-        <a href="index.html" class="nav-logo">ZENO</a>
+        <a href="index.html" class="nav-logo">
+          ZENO
+        </a>
 
         <ul class="nav-links">
-          <li><a href="About.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="Link 3.html">REPORT</a></li>
+
+          <li>
+            <a href="About.html">
+              About
+            </a>
+          </li>
+
+          <li>
+            <a href="contact.html">
+              Contact
+            </a>
+          </li>
+
+          <li>
+            <a href="Link 3.html">
+              REPORT
+            </a>
+          </li>
+
         </ul>
 
-        <a href="index.html" class="nav-cta">Get Started</a>
+        <a href="index.html" class="nav-cta">
+          Get Started
+        </a>
 
       </div>
+
     </nav>
 
+
     <!-- =========================
-         CONTROLS (text + buttons) - initially hidden, shown after intro fades
+         CONTROLS
     ========================= -->
 
-    <div class="controls" id="controls" role="region" aria-label="Zeno controls">
-      <div class="control-buttons" aria-hidden="false">
-        <button type="button" aria-label="Think mode"><span class="action-label">THINK</span>Explore & Ideate</button>
-        <button type="button" aria-label="Create mode"><span class="action-label">CREATE</span>Generate & Remix</button>
-        <button type="button" aria-label="Code mode"><span class="action-label">CODE</span>Prototype & Test</button>
-        <button type="button" aria-label="Imagine mode"><span class="action-label">IMAGINE</span>Experiment & Surprise</button>
+    <div
+      class="controls"
+      id="controls"
+      role="region"
+      aria-label="Zeno controls"
+    >
+
+      <div class="control-buttons">
+
+        <button type="button">
+
+          <span class="action-label">
+            THINK
+          </span>
+
+          Explore & Ideate
+
+        </button>
+
+
+        <button type="button">
+
+          <span class="action-label">
+            CREATE
+          </span>
+
+          Generate & Remix
+
+        </button>
+
+
+        <button type="button">
+
+          <span class="action-label">
+            CODE
+          </span>
+
+          Prototype & Test
+
+        </button>
+
+
+        <button type="button">
+
+          <span class="action-label">
+            IMAGINE
+          </span>
+
+          Experiment & Surprise
+
+        </button>
+
       </div>
+
 
       <div class="text-col">
-        <p class="lead">CLICK ANY OF THE BUTTONS TO START A SPECIFIC TASK — EACH BUTTON IS A GATEWAY INTO A DIFFERENT WAY OF WORKING WITH AI.</p>
 
-        <p class="more"><strong>Think —</strong> Rapid exploration tools for brainstorming and system design. Use Think when you want to map possibilities, define problems, or rapidly iterate on high-level ideas without committing to a single output.</p>
+        <p class="lead">
+          CLICK ANY OF THE BUTTONS TO START A SPECIFIC TASK —
+          EACH BUTTON IS A GATEWAY INTO A DIFFERENT WAY OF
+          WORKING WITH AI.
+        </p>
 
-        <p class="more"><strong>Create —</strong> Visual and audio studios for turning concepts into shareable artifacts. Create provides templates, generative styles, and live previews so your ideas become tangible fast.</p>
 
-        <p class="more"><strong>Code —</strong> A lightweight sandbox for prototyping, testing, and refining logic. Code connects to real-time logs and versioned snippets so you can move from idea to working prototype quickly.</p>
+        <p class="more">
+          <strong>Think —</strong>
+          Rapid exploration tools for brainstorming and system design.
+          Use Think when you want to map possibilities, define problems,
+          or rapidly iterate on high-level ideas.
+        </p>
 
-        <p class="more"><strong>Imagine —</strong> Open-ended experimental tools that remix data, style, and intent to surface surprising results. Imagine is where playful accidents become new directions.</p>
 
-        <p class="more">Each mode includes contextual tips, example prompts, and clear controls so you always know how to steer outputs. The buttons are intentionally bold and left-aligned to make modes easy to find and fast to access.</p>
+        <p class="more">
+          <strong>Create —</strong>
+          Visual and audio studios for turning concepts into shareable
+          artifacts. Create provides templates, generative styles,
+          and live previews.
+        </p>
+
+
+        <p class="more">
+          <strong>Code —</strong>
+          A lightweight sandbox for prototyping, testing, and refining
+          logic. Code connects to real-time logs and versioned snippets.
+        </p>
+
+
+        <p class="more">
+          <strong>Imagine —</strong>
+          Open-ended experimental tools that remix data, style,
+          and intent to surface surprising results.
+        </p>
+
+
+        <p class="more">
+          Each mode includes contextual tips, example prompts,
+          and clear controls so you always know how to steer outputs.
+        </p>
+
       </div>
+
     </div>
+
 
     <!-- =========================
          ZENOVERSE INTRO
     ========================= -->
 
-    <div class="intro" id="intro">
+    <div
+      class="intro"
+      id="intro"
+    >
 
-      <h1>WELCOME TO THE ZENOVERSE</h1>
+      <h1>
+        WELCOME TO THE ZENOVERSE
+      </h1>
+
 
       <div class="tiles-container">
-        <div class="neon-tile">INTERACTIVE</div>
-        <div class="neon-tile">CREATIVE</div>
-        <div class="neon-tile">ACCESSIBLE</div>
-        <div class="neon-tile">INNOVATIVE</div>
+
+        <div class="neon-tile">
+          INTERACTIVE
+        </div>
+
+        <div class="neon-tile">
+          CREATIVE
+        </div>
+
+        <div class="neon-tile">
+          ACCESSIBLE
+        </div>
+
+        <div class="neon-tile">
+          INNOVATIVE
+        </div>
+
       </div>
 
+
       <p>
+
         ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES,
         DESIGNED TO MAKE ARTIFICIAL INTELLIGENCE MORE
-        <strong>INTERACTIVE, CREATIVE, AND ACCESSIBLE.</strong>
+        <strong>
+          INTERACTIVE, CREATIVE, AND ACCESSIBLE.
+        </strong>
+
         INSTEAD OF SIMPLY ASKING AI QUESTIONS...
+
       </p>
 
     </div>
 
+
     <!-- =========================
-         ANIMATION
+         INTRO ANIMATION
     ========================= -->
 
     <script>
+
       setTimeout(() => {
-        document.getElementById("intro").classList.add("fade-out");
-        document.querySelector("nav").classList.add("show");
-        // show the controls at the same time as the nav so they remain visible after the intro fades
-        const controls = document.getElementById("controls");
-        if (controls) controls.classList.add("show");
+
+        const intro =
+          document.getElementById("intro");
+
+        const nav =
+          document.querySelector("nav");
+
+        const controls =
+          document.getElementById("controls");
+
+
+        intro.classList.add("fade-out");
+
+        nav.classList.add("show");
+
+        controls.classList.add("show");
+
       }, 3000);
+
     </script>
 
   </body>
