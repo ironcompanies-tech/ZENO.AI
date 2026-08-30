@@ -25,7 +25,7 @@
     ========================= */
 
     nav {
-      background: rgba(0, 0, 0, 0.78);
+      background: rgba(0, 0, 0, 0.65);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
@@ -37,11 +37,9 @@
 
       z-index: 1000;
 
-      box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 
       opacity: 0;
-
       transition: opacity 1.5s ease;
     }
 
@@ -125,12 +123,11 @@
     }
 
     .nav-cta {
-      background:
-        linear-gradient(
-          135deg,
-          #00d4ff,
-          #0099cc
-        );
+      background: linear-gradient(
+        135deg,
+        #00d4ff,
+        #0099cc
+      );
 
       color: white;
 
@@ -162,7 +159,7 @@
 
 
     /* =========================
-       CONTROLS PANEL
+       CONTROLS / GLASS PANEL
     ========================= */
 
     .controls {
@@ -176,22 +173,22 @@
 
       margin-top: 100px;
 
+      margin-left: auto;
+      margin-right: auto;
+
+      max-width: 1050px;
+
+      padding: 22px;
+
       color: #eaffff;
 
       text-align: left;
 
-      padding: 22px;
+      /* TRUE TRANSPARENT GLASS */
+      background: rgba(0, 0, 0, 0.08);
 
-      max-width: 1050px;
-
-      margin-left: auto;
-      margin-right: auto;
-
-      /* Transparent glass */
-      background: rgba(0, 0, 0, 0.25);
-
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
 
       border-radius: 14px;
 
@@ -199,8 +196,8 @@
         1px solid rgba(0, 212, 255, 0.25);
 
       box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.35),
-        0 0 30px rgba(0, 212, 255, 0.06);
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(0, 212, 255, 0.05);
 
       opacity: 0;
 
@@ -445,7 +442,7 @@
 
     .neon-tile {
       background:
-        rgba(0, 0, 0, 0.6);
+        rgba(0, 0, 0, 0.45);
 
       border:
         2px solid #00d4ff;
@@ -811,7 +808,7 @@
 
 
   <!-- =========================
-       INTRO ANIMATION
+       ANIMATION
   ========================= -->
 
   <script>
