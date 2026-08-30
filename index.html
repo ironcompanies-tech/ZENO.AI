@@ -30,11 +30,9 @@
       -webkit-backdrop-filter: blur(10px);
 
       padding: 0 25px;
-
       position: fixed;
       width: 100%;
       top: 0;
-
       z-index: 1000;
 
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
@@ -60,15 +58,10 @@
 
     .nav-logo {
       color: #00d4ff;
-
       font-size: 1.7em;
-
       font-weight: bold;
-
       letter-spacing: 2px;
-
       text-decoration: none;
-
       transition: color 0.3s ease;
     }
 
@@ -78,23 +71,16 @@
 
     .nav-links {
       display: flex;
-
       list-style: none;
-
       gap: 25px;
     }
 
     .nav-links a {
       color: white;
-
       text-decoration: none;
-
       font-size: 0.95em;
-
       font-weight: 500;
-
       position: relative;
-
       transition: color 0.3s ease;
     }
 
@@ -106,7 +92,6 @@
       content: '';
 
       position: absolute;
-
       width: 0;
       height: 2px;
 
@@ -134,11 +119,9 @@
       padding: 9px 22px;
 
       border: none;
-
       border-radius: 20px;
 
       font-size: 0.9em;
-
       font-weight: 600;
 
       cursor: pointer;
@@ -146,7 +129,6 @@
       transition: all 0.3s ease;
 
       text-decoration: none;
-
       display: inline-block;
     }
 
@@ -172,7 +154,6 @@
       align-items: start;
 
       margin-top: 100px;
-
       margin-left: auto;
       margin-right: auto;
 
@@ -181,10 +162,9 @@
       padding: 22px;
 
       color: #eaffff;
-
       text-align: left;
 
-      /* TRUE TRANSPARENT GLASS */
+      /* Transparent glass */
       background: rgba(0, 0, 0, 0.08);
 
       backdrop-filter: blur(4px);
@@ -212,24 +192,28 @@
 
     .controls.show {
       opacity: 1;
-
       transform: translateY(0);
     }
 
 
     /* =========================
-       BUTTONS
+       BUTTON COLUMN
     ========================= */
 
     .control-buttons {
       display: flex;
-
       flex-direction: column;
-
       gap: 9px;
     }
 
-    .controls button {
+
+    /* =========================
+       ZENO BUTTONS
+    ========================= */
+
+    .zeno-button {
+      display: block;
+
       background:
         linear-gradient(
           135deg,
@@ -263,9 +247,11 @@
         background 0.2s ease;
 
       text-align: left;
+
+      text-decoration: none;
     }
 
-    .controls button:hover {
+    .zeno-button:hover {
       transform: translateX(4px);
 
       box-shadow:
@@ -279,7 +265,7 @@
         );
     }
 
-    .controls button:focus {
+    .zeno-button:focus {
       outline:
         2px solid rgba(0, 240, 255, 0.4);
 
@@ -538,13 +524,11 @@
 
       .nav-cta {
         padding: 8px 17px;
-
         font-size: 0.85em;
       }
 
       .intro h1 {
         font-size: 2.2em;
-
         letter-spacing: 2px;
       }
 
@@ -561,7 +545,6 @@
 
       .neon-tile {
         padding: 18px 10px;
-
         font-size: 0.8em;
       }
 
@@ -586,7 +569,7 @@
         flex-wrap: wrap;
       }
 
-      .controls button {
+      .zeno-button {
         padding: 9px 12px;
 
         font-size: 0.8em;
@@ -600,7 +583,6 @@
 
       .controls .text-col p {
         font-size: 0.9em;
-
         text-align: center;
       }
 
@@ -674,48 +656,48 @@
 
     <div class="control-buttons">
 
-      <button type="button">
-
+      <a
+        href="AI chat.html"
+        class="zeno-button"
+      >
         <span class="action-label">
           THINK
         </span>
-
         Explore & Ideate
+      </a>
 
-      </button>
 
-
-      <button type="button">
-
+      <a
+        href="AI chat.html"
+        class="zeno-button"
+      >
         <span class="action-label">
           CREATE
         </span>
-
         Generate & Remix
+      </a>
 
-      </button>
 
-
-      <button type="button">
-
+      <a
+        href="AI chat.html"
+        class="zeno-button"
+      >
         <span class="action-label">
           CODE
         </span>
-
         Prototype & Test
+      </a>
 
-      </button>
 
-
-      <button type="button">
-
+      <a
+        href="AI chat.html"
+        class="zeno-button"
+      >
         <span class="action-label">
           IMAGINE
         </span>
-
         Experiment & Surprise
-
-      </button>
+      </a>
 
     </div>
 
@@ -792,23 +774,19 @@
 
 
     <p>
-
       ZENO IS AN URBAN AI PLAYGROUND BUILT BY IRONCOMPANIES,
       DESIGNED TO MAKE ARTIFICIAL INTELLIGENCE MORE
-
       <strong>
         INTERACTIVE, CREATIVE, AND ACCESSIBLE.
       </strong>
-
       INSTEAD OF SIMPLY ASKING AI QUESTIONS...
-
     </p>
 
   </div>
 
 
   <!-- =========================
-       ANIMATION
+       INTRO ANIMATION
   ========================= -->
 
   <script>
@@ -823,7 +801,6 @@
 
       const controls =
         document.getElementById("controls");
-
 
       intro.classList.add("fade-out");
 
