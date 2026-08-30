@@ -21,19 +21,19 @@
       }
 
       /* =========================
-         NAVBAR
+         NAVBAR (matches index.html)
       ========================= */
 
       nav {
-        background: rgba(0, 0, 0, 0.85);
+        background: rgba(0, 0, 0, 0.65);
         backdrop-filter: blur(10px);
-        padding: 0 40px;
+        -webkit-backdrop-filter: blur(10px);
+        padding: 0 25px;
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        /* Initially hidden like index.html */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
         opacity: 0;
         transition: opacity 1.5s ease;
       }
@@ -48,12 +48,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 100px;
+        height: 70px;
       }
 
       .nav-logo {
         color: #00d4ff;
-        font-size: 2.3em;
+        font-size: 1.7em;
         font-weight: bold;
         letter-spacing: 2px;
         text-decoration: none;
@@ -67,13 +67,13 @@
       .nav-links {
         display: flex;
         list-style: none;
-        gap: 40px;
+        gap: 25px;
       }
 
       .nav-links a {
         color: white;
         text-decoration: none;
-        font-size: 1.15em;
+        font-size: 0.95em;
         font-weight: 500;
         position: relative;
         transition: color 0.3s ease;
@@ -101,10 +101,10 @@
       .nav-cta {
         background: linear-gradient(135deg, #00d4ff, #0099cc);
         color: white;
-        padding: 12px 35px;
+        padding: 9px 22px;
         border: none;
-        border-radius: 25px;
-        font-size: 1.1em;
+        border-radius: 20px;
+        font-size: 0.9em;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -299,7 +299,7 @@
         }
 
         .nav-container {
-          height: 75px;
+          height: 65px;
         }
 
         .nav-links {
@@ -307,12 +307,12 @@
         }
 
         .nav-logo {
-          font-size: 1.8em;
+          font-size: 1.6em;
         }
 
         .nav-cta {
-          padding: 10px 20px;
-          font-size: 0.9em;
+          padding: 8px 17px;
+          font-size: 0.85em;
         }
 
         .contact h1 {
@@ -372,7 +372,7 @@
 
       <h1>HELP US BUILD MORE POWERFUL SOFTWARE</h1>
 
-      <p class="reason">Your ideas unlock real features — by sharing we can prioritize what matters, fix pain points faster, and build tools people actually want to use. Tell us what you'd love[...]
+      <p class="reason">Your ideas unlock real features — by sharing we can prioritize what matters, fix pain points faster, and build tools people actually want to use. Tell us what you'd love[...]</p>
 
       <div class="tiles-container">
         <button class="center-share-btn" aria-label="Share your ideas">SHARE YOUR IDEAS</button>
@@ -397,6 +397,14 @@
          ANIMATION (contact fades like index intro + nav reveal)
     ========================= -->
 
+    <script>
+      setTimeout(() => {
+        const contact = document.getElementById('contact');
+        const nav = document.querySelector('nav');
+        if (contact) contact.classList.add('fade-out');
+        if (nav) nav.classList.add('show');
+      }, 3000);
+    </script>
 
   </body>
 </html>
