@@ -1,36 +1,301 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CHAT WITH ZENO</title>
-  </head>
+<head>
+  <title>CHAT WITH ZENO</title>
+
   <style>
-  body {
-    min-height: 100vh;
-    background-image: url("zeno-bg.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat:no-repeat;
-    background-attchment:fixed;
-    font-family:'Segoe UI',Tahoma,Geneva,sans-serif;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+
+      background-image: url("zeno-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
     h1 {
-      text-align:center;
-      font-family:'Segoe UI';
-      text-color: Blue;
+      margin-top: 70px;
+
+      text-align: center;
+
+      color: #00d4ff;
+
+      font-size: 2.8em;
+
+      letter-spacing: 3px;
+
+      text-shadow:
+        0 0 15px rgba(0, 212, 255, 0.8),
+        0 0 30px rgba(0, 212, 255, 0.4);
     }
-    .message-box {
-      width: 300px;
-      height: 150px;
-      border: 2px solid #ccc;
-      padding: 10px;
-      font-family:Arial,sans-serif;
-      font-size: 14px;
+
+    .subtitle {
+      margin-top: 10px;
+
+      color: #dffbff;
+
+      font-size: 1em;
+
+      letter-spacing: 1px;
+
+      text-align: center;
+
+      text-shadow:
+        0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    /* =========================
+       CHAT AREA
+    ========================= */
+
+    .chat-container {
+      width: 90%;
+      max-width: 850px;
+
+      height: 65vh;
+
+      margin-top: 35px;
+
+      display: flex;
+      flex-direction: column;
+
+      background: rgba(0, 0, 0, 0.12);
+
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      border:
+        1px solid rgba(0, 212, 255, 0.25);
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(0, 212, 255, 0.08);
+
+      overflow: hidden;
+    }
+
+    /* =========================
+       MESSAGES
+    ========================= */
+
+    .messages {
+      flex: 1;
+
+      padding: 25px;
+
       overflow-y: auto;
-      border-radius:4px;
+
+      color: white;
     }
+
+    .welcome {
+      text-align: center;
+
+      margin-top: 120px;
+
+      color: #00d4ff;
+
+      font-size: 1.1em;
+
+      letter-spacing: 1px;
+
+      text-shadow:
+        0 0 12px rgba(0, 212, 255, 0.5);
+    }
+
+    /* =========================
+       INPUT AREA
+    ========================= */
+
+    .input-area {
+      display: flex;
+
+      gap: 10px;
+
+      padding: 15px;
+
+      background: rgba(0, 0, 0, 0.25);
+
+      border-top:
+        1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    .message-box {
+      flex: 1;
+
+      min-height: 50px;
+      max-height: 120px;
+
+      padding: 14px 16px;
+
+      background: rgba(0, 0, 0, 0.2);
+
+      border:
+        1px solid rgba(0, 212, 255, 0.35);
+
+      border-radius: 12px;
+
+      color: white;
+
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+      font-size: 1em;
+
+      outline: none;
+
+      overflow-y: auto;
+
+      transition:
+        border 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .message-box:focus {
+      border-color: #00d4ff;
+
+      box-shadow:
+        0 0 15px rgba(0, 212, 255, 0.2);
+    }
+
+    .message-box:empty::before {
+      content: "ASK ANY QUESTION...";
+
+      color: rgba(255, 255, 255, 0.45);
+
+      pointer-events: none;
+    }
+
+    /* =========================
+       SEND BUTTON
+    ========================= */
+
+    .send-button {
+      align-self: flex-end;
+
+      height: 50px;
+
+      padding: 0 22px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #00d4ff,
+          #0099cc
+        );
+
+      color: #001117;
+
+      font-size: 0.9em;
+
+      font-weight: 800;
+
+      letter-spacing: 1px;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .send-button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 20px rgba(0, 212, 255, 0.35);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 700px) {
+
+      h1 {
+        margin-top: 45px;
+
+        font-size: 2em;
+      }
+
+      .chat-container {
+        width: 94%;
+
+        height: 70vh;
+
+        margin-top: 25px;
+      }
+
+      .input-area {
+        padding: 10px;
+      }
+
+      .send-button {
+        padding: 0 16px;
+      }
+
+    }
+
   </style>
-  <body>
-    <h1>ASK ANY QUESTION</h1>
-    <div class="message-box" contenteditable="true" placeholder="ASK ANY QUESTION></div>
-  </body>
+</head>
+
+<body>
+
+  <h1>ASK ANY QUESTION</h1>
+
+  <p class="subtitle">
+    ENTER THE ZENOVERSE. THINK. CREATE. EXPLORE.
+  </p>
+
+  <div class="chat-container">
+
+    <div class="messages">
+      <div class="welcome">
+        ZENO IS READY.
+      </div>
+    </div>
+
+    <div class="input-area">
+
+      <div
+        class="message-box"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Ask ZENO a question"
+      ></div>
+
+      <button class="send-button">
+        SEND
+      </button>
+
+    </div>
+
+  </div>
+
+</body>
 </html>
