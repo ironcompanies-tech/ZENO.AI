@@ -33,173 +33,166 @@
     ========================= */
 
     h1 {
-      margin-top: 70px;
-
-      text-align: center;
+      margin-top: 45px;
 
       color: #00d4ff;
 
-      font-size: 2.8em;
+      font-size: 2.2em;
 
       letter-spacing: 3px;
 
       text-shadow:
-        0 0 15px rgba(0, 212, 255, 0.8),
-        0 0 30px rgba(0, 212, 255, 0.4);
+        0 0 12px rgba(0, 212, 255, 0.8),
+        0 0 25px rgba(0, 212, 255, 0.4);
     }
 
     .subtitle {
-      margin-top: 10px;
+      margin-top: 6px;
 
       color: #dffbff;
 
-      font-size: 1em;
+      font-size: 0.85em;
 
       letter-spacing: 1px;
 
       text-align: center;
-
-      text-shadow:
-        0 0 10px rgba(0, 212, 255, 0.5);
     }
 
+
     /* =========================
-       CHAT AREA
+       CHAT WINDOW
     ========================= */
 
     .chat-container {
-      width: 90%;
-      max-width: 850px;
+      width: 88%;
+      max-width: 720px;
 
-      height: 65vh;
+      height: 52vh;
 
-      margin-top: 35px;
+      margin-top: 22px;
 
       display: flex;
       flex-direction: column;
 
-      background: rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.08);
 
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
 
       border:
         1px solid rgba(0, 212, 255, 0.25);
 
-      border-radius: 18px;
+      border-radius: 14px;
 
       box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(0, 212, 255, 0.08);
+        0 8px 30px rgba(0, 0, 0, 0.25);
 
       overflow: hidden;
     }
 
+
     /* =========================
-       MESSAGES
+       MESSAGE AREA
     ========================= */
 
     .messages {
       flex: 1;
 
-      padding: 25px;
+      padding: 20px;
 
       overflow-y: auto;
-
-      color: white;
     }
 
     .welcome {
       text-align: center;
 
-      margin-top: 120px;
+      margin-top: 80px;
 
-      color: #00d4ff;
+      color: #ffffff;
 
-      font-size: 1.1em;
+      font-size: 1.2em;
 
-      letter-spacing: 1px;
+      font-weight: 700;
+
+      letter-spacing: 1.5px;
 
       text-shadow:
-        0 0 12px rgba(0, 212, 255, 0.5);
+        0 0 10px rgba(0, 212, 255, 0.8),
+        0 0 20px rgba(0, 212, 255, 0.4);
     }
 
+
     /* =========================
-       INPUT AREA
+       INPUT
     ========================= */
 
     .input-area {
       display: flex;
 
-      gap: 10px;
+      gap: 8px;
 
-      padding: 15px;
+      padding: 10px;
 
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.18);
 
       border-top:
-        1px solid rgba(0, 212, 255, 0.2);
+        1px solid rgba(0, 212, 255, 0.18);
     }
 
     .message-box {
       flex: 1;
 
-      min-height: 50px;
-      max-height: 120px;
+      min-height: 42px;
+      max-height: 90px;
 
-      padding: 14px 16px;
+      padding: 11px 13px;
 
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.18);
 
       border:
-        1px solid rgba(0, 212, 255, 0.35);
+        1px solid rgba(0, 212, 255, 0.3);
 
-      border-radius: 12px;
+      border-radius: 10px;
 
       color: white;
 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-      font-size: 1em;
+      font-size: 0.9em;
 
       outline: none;
 
       overflow-y: auto;
-
-      transition:
-        border 0.2s ease,
-        box-shadow 0.2s ease;
     }
 
     .message-box:focus {
       border-color: #00d4ff;
 
       box-shadow:
-        0 0 15px rgba(0, 212, 255, 0.2);
+        0 0 10px rgba(0, 212, 255, 0.2);
     }
 
     .message-box:empty::before {
       content: "ASK ANY QUESTION...";
 
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(255, 255, 255, 0.5);
 
       pointer-events: none;
     }
 
+
     /* =========================
-       SEND BUTTON
+       SEND
     ========================= */
 
     .send-button {
       align-self: flex-end;
 
-      height: 50px;
+      height: 42px;
 
-      padding: 0 22px;
+      padding: 0 18px;
 
       border: none;
 
-      border-radius: 12px;
+      border-radius: 10px;
 
       background:
         linear-gradient(
@@ -210,11 +203,11 @@
 
       color: #001117;
 
-      font-size: 0.9em;
+      font-size: 0.82em;
 
       font-weight: 800;
 
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
 
       cursor: pointer;
 
@@ -227,7 +220,7 @@
       transform: translateY(-2px);
 
       box-shadow:
-        0 8px 20px rgba(0, 212, 255, 0.35);
+        0 6px 15px rgba(0, 212, 255, 0.35);
     }
 
 
@@ -238,31 +231,32 @@
     @media (max-width: 700px) {
 
       h1 {
-        margin-top: 45px;
-
-        font-size: 2em;
+        margin-top: 35px;
+        font-size: 1.7em;
       }
 
       .chat-container {
         width: 94%;
+        height: 55vh;
+        margin-top: 18px;
+      }
 
-        height: 70vh;
-
-        margin-top: 25px;
+      .welcome {
+        margin-top: 60px;
       }
 
       .input-area {
-        padding: 10px;
+        padding: 8px;
       }
 
       .send-button {
-        padding: 0 16px;
+        padding: 0 14px;
       }
-
     }
 
   </style>
 </head>
+
 
 <body>
 
@@ -272,13 +266,17 @@
     ENTER THE ZENOVERSE. THINK. CREATE. EXPLORE.
   </p>
 
+
   <div class="chat-container">
 
     <div class="messages">
+
       <div class="welcome">
         ZENO IS READY.
       </div>
+
     </div>
+
 
     <div class="input-area">
 
