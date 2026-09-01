@@ -500,6 +500,95 @@
     </div>
 
   </div>
+  <script>
+  const messageBox = document.querySelector(".message-box");
+  const sendButton = document.querySelector(".send-button");
+  const messages = document.querySelector(".messages");
+
+  function sendMessage() {
+    const text = messageBox.innerText.trim();
+
+    if (text === "") return;
+
+    // Remove welcome message
+    const welcome = document.querySelector(".welcome");
+    if (welcome) {
+      welcome.remove();
+    }
+
+    // Create user message
+    const userMessage = document.createElement("div");
+
+    userMessage.style.cssText = `
+      max-width: 75%;
+      margin-left: auto;
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      background: rgba(0, 212, 255, 0.18);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      border-radius: 12px;
+      color: white;
+      line-height: 1.4;
+      word-wrap: break-word;
+    `;
+
+    userMessage.textContent = text;
+
+    messages.appendChild(userMessage);
+
+    // Clear input
+    messageBox.innerText = "";
+
+    // ZENO thinking placeholder
+    const thinking = document.createElement("div");
+
+    thinking.style.cssText = `
+      max-width: 75%;
+      margin-bottom: 12px;
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      border-radius: 12px;
+      color: #00d4ff;
+      text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+    `;
+
+    thinking.textContent = "ZENO IS THINKING...";
+
+    messages.appendChild(thinking);
+
+    // Keep newest message visible
+    messages.scrollTop = messages.scrollHeight;
+
+    // Temporary response
+    setTimeout(() => {
+
+      thinking.textContent =
+        "ZENO IS READY. CONNECT THE AI BACKEND TO ACTIVATE REAL RESPONSES.";
+
+      messages.scrollTop = messages.scrollHeight;
+
+    }, 1500);
+  }
+
+
+  // SEND button
+  sendButton.addEventListener("click", sendMessage);
+
+
+  // ENTER to send
+  messageBox.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter" && !event.shiftKey) {
+
+      event.preventDefault();
+
+      sendMessage();
+
+    }
+
+  });
+</script>
 
 </body>
 </html>
