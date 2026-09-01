@@ -124,12 +124,12 @@
 
       display: flex;
 
-      justify-content: center;
-
-      align-items: center;
+      flex-direction: column;
     }
 
     .welcome {
+      margin: auto;
+
       color: white;
 
       font-size: 1.3rem;
@@ -187,13 +187,6 @@
       border-radius: 11px;
 
       color: white;
-
-      font-family:
-        'Segoe UI',
-        Tahoma,
-        Geneva,
-        Verdana,
-        sans-serif;
 
       font-size: 0.92rem;
 
@@ -270,82 +263,6 @@
 
     .send-button:active {
       transform: translateY(0);
-    }
-
-
-    /* =========================
-       DESKTOP LARGE SCREENS
-    ========================= */
-
-    @media (min-width: 1000px) {
-
-      h1 {
-        margin-top: 50px;
-
-        font-size: 2.5rem;
-      }
-
-      .subtitle {
-        font-size: 0.9rem;
-      }
-
-      .chat-container {
-        width: 82%;
-
-        max-width: 900px;
-
-        height: 60vh;
-
-        margin-top: 28px;
-      }
-
-      .messages {
-        padding: 30px;
-      }
-
-      .welcome {
-        font-size: 1.4rem;
-      }
-
-      .input-area {
-        padding: 13px;
-      }
-
-      .message-box {
-        min-height: 48px;
-
-        font-size: 0.95rem;
-      }
-
-      .send-button {
-        height: 48px;
-
-        padding: 0 23px;
-      }
-    }
-
-
-    /* =========================
-       TABLETS
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      h1 {
-        margin-top: 38px;
-
-        font-size: 2rem;
-      }
-
-      .chat-container {
-        width: 92%;
-
-        height: 60vh;
-      }
-
-      .welcome {
-        font-size: 1.15rem;
-      }
     }
 
 
@@ -500,95 +417,179 @@
     </div>
 
   </div>
+
+
+  <!-- =========================
+       CHAT ENGINE
+  ========================= -->
+
   <script>
-  const messageBox = document.querySelector(".message-box");
-  const sendButton = document.querySelector(".send-button");
-  const messages = document.querySelector(".messages");
 
-  function sendMessage() {
-    const text = messageBox.innerText.trim();
+    const messageBox =
+      document.querySelector(".message-box");
 
-    if (text === "") return;
+    const sendButton =
+      document.querySelector(".send-button");
 
-    // Remove welcome message
-    const welcome = document.querySelector(".welcome");
-    if (welcome) {
-      welcome.remove();
-    }
+    const messages =
+      document.querySelector(".messages");
 
-    // Create user message
-    const userMessage = document.createElement("div");
 
-    userMessage.style.cssText = `
-      max-width: 75%;
-      margin-left: auto;
-      margin-bottom: 12px;
-      padding: 10px 14px;
-      background: rgba(0, 212, 255, 0.18);
-      border: 1px solid rgba(0, 212, 255, 0.35);
-      border-radius: 12px;
-      color: white;
-      line-height: 1.4;
-      word-wrap: break-word;
-    `;
+    function sendMessage() {
 
-    userMessage.textContent = text;
+      const text =
+        messageBox.innerText.trim();
 
-    messages.appendChild(userMessage);
+      /* Don't send empty messages */
+      if (text === "") {
+        return;
+      }
 
-    // Clear input
-    messageBox.innerText = "";
 
-    // ZENO thinking placeholder
-    const thinking = document.createElement("div");
+      /* Remove welcome message */
+      const welcome =
+        document.querySelector(".welcome");
 
-    thinking.style.cssText = `
-      max-width: 75%;
-      margin-bottom: 12px;
-      padding: 10px 14px;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(0, 212, 255, 0.25);
-      border-radius: 12px;
-      color: #00d4ff;
-      text-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
-    `;
+      if (welcome) {
+        welcome.remove();
+      }
 
-    thinking.textContent = "ZENO IS THINKING...";
 
-    messages.appendChild(thinking);
+      /* =========================
+         USER MESSAGE
+      ========================= */
 
-    // Keep newest message visible
-    messages.scrollTop = messages.scrollHeight;
+      const userMessage =
+        document.createElement("div");
 
-    // Temporary response
-    setTimeout(() => {
+      userMessage.style.cssText = `
+
+        width: fit-content;
+
+        max-width: 75%;
+
+        margin: 0 0 12px 0;
+
+        padding: 10px 14px;
+
+        background:
+          rgba(0, 212, 255, 0.18);
+
+        border:
+          1px solid rgba(0, 212, 255, 0.35);
+
+        border-radius: 12px;
+
+        color: white;
+
+        line-height: 1.4;
+
+        word-wrap: break-word;
+
+      `;
+
+      userMessage.textContent = text;
+
+      messages.appendChild(userMessage);
+
+
+      /* Clear input */
+      messageBox.innerText = "";
+
+
+      /* =========================
+         ZENO THINKING
+      ========================= */
+
+      const thinking =
+        document.createElement("div");
+
+      thinking.style.cssText = `
+
+        width: fit-content;
+
+        max-width: 75%;
+
+        margin: 0 0 12px 0;
+
+        padding: 10px 14px;
+
+        background:
+          rgba(0, 0, 0, 0.25);
+
+        border:
+          1px solid rgba(0, 212, 255, 0.25);
+
+        border-radius: 12px;
+
+        color: #00d4ff;
+
+        text-shadow:
+          0 0 8px rgba(0, 212, 255, 0.6);
+
+      `;
 
       thinking.textContent =
-        "ZENO IS READY. CONNECT THE AI BACKEND TO ACTIVATE REAL RESPONSES.";
+        "ZENO IS THINKING...";
 
-      messages.scrollTop = messages.scrollHeight;
-
-    }, 1500);
-  }
+      messages.appendChild(thinking);
 
 
-  // SEND button
-  sendButton.addEventListener("click", sendMessage);
+      /* Scroll to newest message */
+      messages.scrollTop =
+        messages.scrollHeight;
 
 
-  // ENTER to send
-  messageBox.addEventListener("keydown", function(event) {
+      /* =========================
+         TEMPORARY RESPONSE
+      ========================= */
 
-    if (event.key === "Enter" && !event.shiftKey) {
+      setTimeout(() => {
 
-      event.preventDefault();
+        thinking.textContent =
+          "ZENO IS READY. CONNECT THE AI BACKEND TO ACTIVATE REAL RESPONSES.";
 
-      sendMessage();
+        messages.scrollTop =
+          messages.scrollHeight;
+
+      }, 1500);
 
     }
 
-  });
-</script>
+
+    /* =========================
+       SEND BUTTON
+    ========================= */
+
+    sendButton.addEventListener(
+      "click",
+      sendMessage
+    );
+
+
+    /* =========================
+       ENTER TO SEND
+    ========================= */
+
+    messageBox.addEventListener(
+      "keydown",
+      function(event) {
+
+        if (
+          event.key === "Enter" &&
+          !event.shiftKey
+        ) {
+
+          event.preventDefault();
+
+          sendMessage();
+
+        }
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
